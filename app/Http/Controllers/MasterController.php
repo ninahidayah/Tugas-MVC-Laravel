@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\TodoList;
 
 class MasterController extends Controller
 {
@@ -14,9 +15,13 @@ class MasterController extends Controller
      */
     public function index()
     {
-        return "Masuk";
-    }
+        $data = TodoList::all(); //select * from table
+        // dd($data); // untuk melihat data
+        return view('master/index',[
+            "data" => $data // parsing data
+        ]);
 
+    }
     /**
      * Show the form for creating a new resource.
      *
